@@ -133,7 +133,7 @@ The data being written to the ledger are created as JSON objects that are then '
                     `await ctx.stub.putState(commKey, JSON.stringify(commodity));`
 
 
-We will add a `checkQuantity` function to query or read from the network.  We will use the `getState()` method from the smart contract context to read the data and then pass in the output into a JSON object.  This transaction function will take the Hyperledger Fabric context and one argument, `commKey`, which identifies which commodity to process the transaction against.
+Take a look at the `checkQuantity` function to query or read from the network.  This uses the `getState()` method from the smart contract context to read the data and then pass in the output into a JSON object.  This transaction function will take the Hyperledger Fabric context and one argument, `commKey`, which identifies which commodity to process the transaction against.
 
                     `let commodityBytes = await ctx.stub.getState(commKey);`
 
@@ -148,7 +148,11 @@ Voila' You have completed writing the smart contract.
 
 Now that your smart contract is written - we need to install it and instantiate it on the network using the IBM Blockchain Platform VSCode Extension
 
-* If you didn't create the code inside of VSCode - you will need to add the `contract` folder into the tool.  You will see this:
+* If you didn't create the code inside of VSCode - you will need to add the `contract` folder into the tool.
+
+From the file explorer view, right click below your list of files in the empty space, and select "Add Folder to Workspace". Then, navigate to the project's folder and select the "contract" directory. Click "Add".
+
+You should see the contract directory appear as a top level directory in the file explorer view:
   
 <p align="center">
   <img src="doc-images/file-explorer.png">
@@ -165,7 +169,7 @@ Now that your smart contract is written - we need to install it and instantiate 
 </p>
 
 
-* Next, click on the 3 dots and select `Package a Smart Contract Project`.  You will see the following once your project has been packaged.
+* Next, click on the 3 dots and select `Package a Smart Contract Project`.  If asked which workspace to package, select "contract".
 
 <p align="center">
   <img src="doc-images/PackageSmartContract.png">
@@ -239,7 +243,7 @@ Notice that all of the transactions that you created in the `auction.js` file ar
 
 At this point, you will have created the 2 instances of commodities and 2 instances of traders.
 
-Now let's submit the `checkQuantity` transaction.  Similarly, right-hand click on the the `checkQuantity` transaction. This time you do have to enter an option. It has to be in a `["key", "value"]` format.  Enter `"commodity", "GOLD"` as a parameter. You should see the following response in your output window:
+Now let's submit the `checkQuantity` transaction.  Similarly, right-hand click on the the `checkQuantity` transaction. This time you do have to enter an option. It has to be in a `["key"]` format.  Enter `"GOLD"` as a parameter. You should see the following response in your output window:
 
 <p align="center">
   <img src="doc-images/output-quantity-transaction.png">
